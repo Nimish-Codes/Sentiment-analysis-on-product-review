@@ -30,7 +30,7 @@ def analyze_sentiment_with_bert(review):
     # Class 0: Negative, Class 1: Neutral, Class 2: Positive
     if predicted_class == 0:
         return 'Negative'
-    elif predicted_class == 0.5:
+    elif predicted_class == 1:
         return 'Neutral'
     else:
         return 'Positive'
