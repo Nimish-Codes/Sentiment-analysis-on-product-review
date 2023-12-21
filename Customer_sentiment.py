@@ -1,6 +1,6 @@
 import torch
-from transformers import BertTokenizer, BertForSequenceClassification
 import streamlit as st
+from transformers import BertTokenizer, BertForSequenceClassification
 
 def analyze_sentiment_with_bert(review):
     # Load pre-trained BERT model and tokenizer
@@ -35,19 +35,15 @@ def analyze_sentiment_with_bert(review):
     else:
         return 'Positive'
 
-def main():
-    st.title("Product Review Sentiment Analyzer")
+# Streamlit App
+st.title('Sentiment Analysis with BERT')
+st.write('This app performs sentiment analysis on user-provided text using a pre-trained BERT model.')
 
-    # User input for product review
-    review = st.text_area("Enter your product review:")
-
-    # Analyze sentiment when the user submits a review
-    if st.button("Analyze Sentiment"):
-        if review:
-            sentiment = analyze_sentiment_with_bert(review)
-            st.write(f'This is a "{sentiment}" review from the customer.')
-        else:
-            st.warning("Please enter a product review.")
-
-if __name__ == "__main__":
-    main()
+# Input field for user
+user_review = st.text_area('Enter your review:')
+if st.button('Analyze Sentiment'):
+    if user_review:
+        sentiment = analyze_sentiment_with_bert(user_review)
+        st.write(f'This is a "{sentiment}" review from the user.')
+    else:
+        st.warning('Please enter a review.')
